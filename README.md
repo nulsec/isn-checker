@@ -19,3 +19,47 @@ Memastikan data yang dimasukkan sudah benar sesuai dengan data yang terdaftar di
 Menghubungi operator Dapodik (Data Pokok Pendidikan) di sekolah
 Menghubungi pusat layanan NISN di Kementerian melalui email atau kontak yang tertera di website
 
+
+check from nik number(nomor ktp)
+````
+import http.client
+
+conn = http.client.HTTPSConnection("nisn-checker.p.rapidapi.com")
+
+payload = "nik=ktp-number"
+
+headers = {
+    'x-rapidapi-key': "key",
+    'x-rapidapi-host': "nisn-checker.p.rapidapi.com",
+    'Content-Type': "application/x-www-form-urlencoded"
+}
+
+conn.request("POST", "/nisn", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+````
+
+ckeck from nisn number
+````
+import http.client
+
+conn = http.client.HTTPSConnection("nisn-checker.p.rapidapi.com")
+
+payload = "nisn=nisn-number"
+
+headers = {
+    'x-rapidapi-key': "key",
+    'x-rapidapi-host': "nisn-checker.p.rapidapi.com",
+    'Content-Type': "application/x-www-form-urlencoded"
+}
+
+conn.request("POST", "/nisn", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
+````
